@@ -9,6 +9,9 @@ services:
         - HOSTGID=$HOSTGID
     volumes:
       - ./../backend:/backend
+    environment:
+      - FLASK_APP=/backend/flask_app.py
+      - FLASK_DEBUG=1
     ports:
       - 0.0.0.0:80:5000
 
