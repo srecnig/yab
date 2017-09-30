@@ -12,4 +12,8 @@ def create_app(config_object=None):
     from yab.model import db
     db.init_app(app)
 
+    from flask_migrate import Migrate
+    migrate = Migrate()
+    migrate.init_app(app, db)
+
     return app

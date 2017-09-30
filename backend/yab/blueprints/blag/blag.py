@@ -8,10 +8,10 @@ blag = Blueprint('blag', __name__, template_folder='templates', static_folder='s
 @blag.route('/posts')
 def root_index():
     posts = Post.query.all()
-    return "welcome to my blag: %s" % posts
+    return 'welcome to my blag: %r' % [p.title for p in posts]
 
 
 @blag.route('/posts/<int:post_id>')
 def post_show(post_id):
-    post = Post.query.filter_by(id='post_id').first()
-    return "i am a post: %r" % post
+    post = Post.query.filter_by(id=post_id).first()
+    return 'i am the post: %r, here\'s my content: %r' % (post.title, post.body)
