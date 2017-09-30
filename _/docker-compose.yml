@@ -1,6 +1,7 @@
 version: "3"
 
 services:
+
   backend:
     build:
       context: ./../backend/_
@@ -10,8 +11,22 @@ services:
     volumes:
       - ./../backend:/backend
     environment:
-      - FLASK_APP=/backend/flask_app.py
+      - FLASK_APP=flask_app.py
       - FLASK_DEBUG=1
     ports:
       - 0.0.0.0:80:5000
+    hostname: backend
+    links:
+      - postgres:postgres
 
+  postgres:
+    build:
+      context: postgres
+    volumes:
+      - ./postgres/.data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 0.0.0.0:5432:5432
+    hostname: postgres
