@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: ./../backend/_
+      args:
+        - HOSTUID=$HOSTUID
+        - HOSTGID=$HOSTGID
+    volumes:
+      - ./../backend:/backend
+    ports:
+      - 0.0.0.0:80:5000
+
