@@ -1,8 +1,9 @@
-from . import db
-
 from datetime import datetime
 
 from sqlalchemy.dialects.postgresql import JSONB
+
+from . import db
+
 
 class Post(db.Model):
     __tablename__ = 'posts'
