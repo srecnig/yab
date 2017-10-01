@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from yab.model import Post
+from yab.models import Post
 
 blag = Blueprint('blag', __name__, template_folder='templates', static_folder='static', static_url_path='/static/blag')
 

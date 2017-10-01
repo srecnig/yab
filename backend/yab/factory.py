@@ -9,7 +9,7 @@ def create_app(config_object=None):
     from yab.blueprints.blag import blag
     app.register_blueprint(blag)
 
-    from yab.model import db
+    from yab.models import db
     db.init_app(app)
 
     from flask_migrate import Migrate

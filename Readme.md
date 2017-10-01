@@ -10,6 +10,14 @@ you need [Docker](https://www.docker.com) and [docker-compose](https://docs.dock
 postgresql allows storing arbitrary json data in its's tables (in this example, post has a `meta` field, and it can easily be queried again:
 
 ```
+from yab.models import db
+from yab.models import Post
+
+# create a post with metadata
+post = Post(title="with meta", body="such metadata, weeeeee", meta={"custom_1": "such value", "custom_2": "many wow" })
+db.session.add(a)
+
+# query for that
 Post.query.filter(Post.meta["custom_1"].astext == 'such value').all()
 ```
 
