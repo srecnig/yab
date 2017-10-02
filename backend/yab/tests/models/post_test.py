@@ -2,11 +2,11 @@ import pytest
 
 from sqlalchemy.exc import IntegrityError
 
-from yab.tests import BaseTest
+from yab.tests import ModelTest
 from yab.models import db, Post
 
 
-class PostTest(BaseTest):
+class PostTest(ModelTest):
 
     def test_title_must_exist(self):
         with pytest.raises(IntegrityError):

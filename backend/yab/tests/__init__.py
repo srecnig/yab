@@ -1,1 +1,1 @@
-from .test_helper import BaseTest
+from .test_helper import ModelTest, BlueprintTest
