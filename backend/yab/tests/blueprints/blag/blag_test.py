@@ -1,6 +1,8 @@
+from faker import Faker
 
-from yab.tests import BlueprintTest
 from yab.models import db, Post
+from yab.tests import BlueprintTest
+from yab.tests.factories import PostFactory
 
 
 class PostTest(BlueprintTest):
@@ -25,8 +27,9 @@ class PostTest(BlueprintTest):
 
 
     def _create_posts(self):
-        self.post_a = Post(title="title", body="Some body")
-        self.post_b = Post(title="more title", body="more body")
+        self.post_a = PostFactory.build()
+        self.post_b = PostFactory.build()
+
         db.session.add(self.post_a)
         db.session.add(self.post_b)
         db.session.commit()

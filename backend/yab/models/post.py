@@ -16,3 +16,11 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post %r>' % self.title
+
+    def to_public_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "body": self.body,
+            "published_at": self.published_at
+        }

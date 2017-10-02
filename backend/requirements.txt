@@ -1,6 +1,8 @@
 alembic==0.9.5
 click==6.7
 decorator==4.1.2
+factory-boy==2.9.2
+Faker==0.8.4
 Flask==0.12.2
 Flask-Migrate==2.1.1
 flask-shell-ipython==0.3.0
@@ -13,6 +15,7 @@ jedi==0.11.0
 Jinja2==2.9.6
 Mako==1.0.7
 MarkupSafe==1.0
+nose2==0.6.5
 parso==0.1.0
 pexpect==4.2.1
 pickleshare==0.7.4
