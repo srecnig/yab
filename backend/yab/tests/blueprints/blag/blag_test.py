@@ -1,3 +1,5 @@
+import json
+
 from faker import Faker
 
 from yab.models import db, Post
@@ -15,13 +17,18 @@ class PostTest(BlueprintTest):
     def test_get_show(self):
         self._create_posts()
         response = self.client.get("/posts/%s" % self.post_a.id)
+        data = json.loads(response.data)
         assert response.status_code == 200
         assert response.content_type == "application/json"
+        assert data["status"] is True
 
-    def test_get_show_returns_404(self):
+
+    def test_get_show_returns_false(self):
         response = self.client.get("/posts/1")
-        assert response.status_code == 404
+        data = json.loads(response.data)
+        assert response.status_code == 200
         assert response.content_type == "application/json"
+        assert data["status"] is False
 
     def _create_posts(self):
         self.post_a = PostFactory.build()

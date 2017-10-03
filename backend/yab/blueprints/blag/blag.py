@@ -8,13 +8,14 @@ blag = Blueprint('blag', __name__, template_folder='templates', static_folder='s
 @blag.route('/posts')
 def post_index():
     posts = Post.query.all()
-    return jsonify([post.to_public_dict() for post in posts])
+    return jsonify({"status": True, "posts": [post.to_public_dict() for post in posts]})
 
 
 @blag.route('/posts/<int:post_id>')
 def post_show(post_id):
     post = Post.query.filter_by(id=post_id).first()
     if post:
-        return jsonify(post.to_public_dict())
+        return jsonify({"status": True, "post": post.to_public_dict()})
     else:
-        abort(404)
+        return jsonify({"status": False})
+

@@ -37,8 +37,8 @@ class PostTest(ModelTest):
         db.session.commit()
 
         post_dict = post.to_public_dict()
-        assert post_dict.get("title") == "Some title"
-        assert post_dict.get("body") == "Some body"
+        assert post_dict.get("title") is not None
+        assert post_dict.get("body") is not None
         assert post_dict.get("published_at") is not None
         assert post_dict.get("meta") is None
 
